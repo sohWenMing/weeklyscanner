@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% for (let data of dataArray) { %>
+        <h1><%- data.pair %> </h1>
+        <ul>
+        <% for (let record of data.dates) { %>
+            <li>
+                date: <%- record.date %>
+                open: <%- record.open %>
+                high: <%- record.high %>
+                low: <%- record.low %>
+                close: <%- record.close %>
+            </li>
+            <% } %>
+       
+        </ul>
+        <% } %>
+</body>
+</html>

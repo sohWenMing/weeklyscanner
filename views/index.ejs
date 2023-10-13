@@ -4,22 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <% for (let data of dataArray) { %>
+    
         <h1><%- data.pair %> </h1>
         <ul>
         <% for (let record of data.dates) { %>
-            date: <%- record.date %>
+            <div class="container">
+            <span class="date">Date: <%- record.date %></span>
+           
                 <ul>
                     <li>open: <%- record.open %></li>
                     <li>high: <%- record.high %></li>
                     <li>low: <%- record.low %></li>
                     <li>close: <%- record.close %></li>
                 </ul>
+            </div> 
             <% } %>
-       
-        </ul>
+       </ul>
+      
         <% } %>
 </body>
 </html>

@@ -3,11 +3,15 @@ const router = express.Router();
 const axios = require('axios');
 
 const pairs = [
-    ['USD', 'JPY'],
-    ['USD', 'GBP'],
-    ['USD', 'SGD'],
-    ['SGD', 'JPY']
+    ['EUR', 'USD']
 ]
+
+// const pairs = [
+//     ['USD', 'JPY'],
+//     ['USD', 'GBP'],
+//     ['USD', 'SGD'],
+//     ['SGD', 'JPY']
+// ]
 
 async function fetchData(link) {    
     try {
@@ -21,7 +25,8 @@ async function fetchData(link) {
 
 //in this part of the code, the async function returns a promise. so the response has to be dealt with with a .then
 
-const apiKey = "1GLJ4HTZ9LG7RPHF"
+// const apiKey = "1GLJ4HTZ9LG7RPHF"
+const apiKey = "demo"
 
 router.get("/", (req, res) => {
 
@@ -57,7 +62,6 @@ router.get("/", (req, res) => {
                         high,
                         low,
                         close,
-
                     });
                 }
             }

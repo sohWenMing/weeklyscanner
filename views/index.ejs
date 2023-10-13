@@ -11,11 +11,13 @@
         <ul>
         <% for (let record of data.dates) { %>
             <li>
-                date: <%- record.date %>
-                open: <%- record.open %>
-                high: <%- record.high %>
-                low: <%- record.low %>
-                close: <%- record.close %>
+                <ul>
+                    <li>date: <%- record.date %></li>
+                    <li>open: <%- record.open %></li>
+                    <li>high: <%- record.high %></li>
+                    <li>low: <%- record.low %></li>
+                    <li>close: <%- record.close %></li>
+                </ul>
             </li>
             <% } %>
        

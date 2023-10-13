@@ -7,10 +7,26 @@ const axios = require('axios');
 // ]
 
 const pairs = [
-    ['USD', 'JPY'],
-    ['USD', 'GBP'],
+    ['SGD', 'JPY'],
     ['USD', 'SGD'],
-    ['SGD', 'JPY']
+    ['USD', 'CAD'],
+    ['NZD', 'CHF'], 
+    ['AUD', 'CHF'],
+    ['GBP', 'NZD'],
+    ['GBP', 'AUD'],
+    ['EUR', 'GBP'],
+    ['EUR', 'NZD'],
+    ['EUR', 'AUD'],
+    ['CHF', 'JPY'],
+    ['NZD', 'JPY'],
+    ['AUD', 'JPY'],
+    ['GBP', 'JPY'],
+    ['EUR', 'JPY'],
+    ['USD', 'JPY'],
+    ['USD', 'CHF'],
+    ['NZD', 'USD'], 
+    ['AUD', 'USD'],
+    ['GBP', 'USD']
 ]
 
 async function fetchData(link) {    

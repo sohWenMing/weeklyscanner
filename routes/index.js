@@ -2,11 +2,17 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
+// const pairs = [
+//     ['USD', 'JPY'],
+//     ['USD', 'GBP'],
+//     ['USD', 'SGD'],
+//     ['SGD', 'JPY']
+// ]
+
+//working on demo
+
 const pairs = [
-    ['USD', 'JPY'],
-    ['USD', 'GBP'],
-    ['USD', 'SGD'],
-    ['SGD', 'JPY']
+    ['EUR', 'USD']
 ]
 
 async function fetchData(link) {    
@@ -21,7 +27,9 @@ async function fetchData(link) {
 
 //in this part of the code, the async function returns a promise. so the response has to be dealt with with a .then
 
-const apiKey = "1GLJ4HTZ9LG7RPHF"
+// const apiKey = "1GLJ4HTZ9LG7RPHF"
+//working on demo//
+const apiKey = "demo"
 
 router.get("/", (req, res) => {
 
@@ -33,16 +41,23 @@ router.get("/", (req, res) => {
             //return is required here because of arrap.map, fetchData(url) first returns a promise which is dealt with with a .then. so
             //for each result, it's dealing with the timeSeriesData that is gotten back.
             const timeSeriesData = result.data['Time Series FX (Weekly)'];
-            console.log(timeSeriesData);
+            if(timeSeriesData) {
+                console.log("data gotten.")
+            }
+            else {
+                console.log(timeSeriesData);
+            }
             const pairKey = `${pair[0]}-${pair[1]}`;
-
             const data = [];
 
             const dateKeys = Object.keys(timeSeriesData).slice(0, 5);
+            //gets the first 5 in the Time Series FX(Weekly) - this is because the date
+            //is actually the key of the object.
 
             for (const date of dateKeys) {
                 if(timeSeriesData.hasOwnProperty(date)) {
                     const entry = timeSeriesData[date];
+                    //pulls the OHLC into entry
                     const { "1. open": open, "2. high": high, "3. low": low, "4. close": close } = entry;
                     data.push({
                         date,

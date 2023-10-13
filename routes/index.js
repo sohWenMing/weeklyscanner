@@ -19,16 +19,21 @@ async function fetchData(link) {
     }
 }
 
+//in this part of the code, the async function returns a promise. so the response has to be dealt with with a .then
+
 const apiKey = "1GLJ4HTZ9LG7RPHF"
 
 router.get("/", (req, res) => {
 
     const dataByPair = {};
-
+// 
     const requests = pairs.map((pair) => {
         const url = `https://www.alphavantage.co/query?function=FX_WEEKLY&from_symbol=${pair[0]}&to_symbol=${pair[1]}&apikey=${apiKey}`;
         return fetchData(url).then((result) => {
+            //return is required here because of arrap.map, fetchData(url) first returns a promise which is dealt with with a .then. so
+            //for each result, it's dealing with the timeSeriesData that is gotten back.
             const timeSeriesData = result.data['Time Series FX (Weekly)'];
+            console.log(timeSeriesData);
             const pairKey = `${pair[0]}-${pair[1]}`;
 
             const data = [];
